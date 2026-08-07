@@ -1,0 +1,146 @@
+/* ==========================================================================
+   STITCHCRAFT — Right-to-Left (RTL) support stylesheet
+   --------------------------------------------------------------------------
+   Loaded automatically by main.js when document direction is set to "rtl"
+   (Arabic, Hebrew, Persian, Urdu, …). Complements Bootstrap's RTL build.
+   ========================================================================== */
+
+/* Keep trailing punctuation (. , ? ! :) attached to the end of the sentence.
+   Content is English, so each text block resolves its own direction from its
+   first strong character (LTR for English, RTL for Arabic) — the layout still
+   mirrors, but question marks and full stops no longer jump to the front. */
+[dir='rtl'] p,
+[dir='rtl'] h1, [dir='rtl'] h2, [dir='rtl'] h3,
+[dir='rtl'] h4, [dir='rtl'] h5, [dir='rtl'] h6,
+[dir='rtl'] li, [dir='rtl'] dt, [dir='rtl'] dd,
+[dir='rtl'] th, [dir='rtl'] td, [dir='rtl'] caption,
+[dir='rtl'] blockquote, [dir='rtl'] cite, [dir='rtl'] label,
+[dir='rtl'] legend, [dir='rtl'] figcaption, [dir='rtl'] address, [dir='rtl'] small,
+[dir='rtl'] .accordion-body,
+[dir='rtl'] .widget-title, [dir='rtl'] .section-title,
+[dir='rtl'] .page-title, [dir='rtl'] .hero-title,
+[dir='rtl'] .section-lead, [dir='rtl'] .page-lead, [dir='rtl'] .hero-lead,
+[dir='rtl'] .contact-card div, [dir='rtl'] .form-label, [dir='rtl'] .form-check-label,
+[dir='rtl'] .badge, [dir='rtl'] .badge-soft, [dir='rtl'] .tag-cloud a,
+[dir='rtl'] .btn, [dir='rtl'] .hero-badge, [dir='rtl'] a,
+[dir='rtl'] .mini-post h6, [dir='rtl'] .mini-post .date {
+  unicode-bidi: plaintext;
+}
+
+/* FAQ accordion in RTL — question reads from the right, chevron sits at the
+   left (end) of the button. plaintext on the question span keeps "?" after
+   the text; the ::after margin swap pushes the chevron to the left edge.
+   (Default flex-row already lays text right → chevron left in RTL, so no
+   row-reverse — that would put the text on the left and chevron on the right.) */
+[dir='rtl'] .accordion-button .faq-q {
+  unicode-bidi: plaintext;
+}
+[dir='rtl'] .accordion-button::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Floating toggles (theme + RTL buttons on login / register / standalone
+   pages) use the LTR-only "end-0" utility — move them to the top-left in
+   RTL so they mirror like the rest of the layout. */
+[dir='rtl'] .position-fixed.top-0.end-0 {
+  right: auto !important;
+  left: 0 !important;
+}
+
+/* Keep the login/register brand arranged exactly like the navbar brand in
+   RTL (logo right, company name left) instead of the plaintext-flipped
+   LTR order, while staying centered in the auth card. */
+[dir='rtl'] .auth-card .brand {
+  unicode-bidi: normal;
+}
+
+[dir='rtl'] body {
+  text-align: right;
+  letter-spacing: 0;
+}
+
+/* Form controls align right in RTL so placeholders & values sit on the
+   correct edge (email/tel inputs otherwise force left alignment). */
+[dir='rtl'] .form-control,
+[dir='rtl'] .form-select {
+  text-align: right;
+}
+
+/* Typography for RTL scripts */
+[dir='rtl'] h1, [dir='rtl'] h2, [dir='rtl'] h3,
+[dir='rtl'] h4, [dir='rtl'] h5, [dir='rtl'] h6,
+[dir='rtl'] .h1, [dir='rtl'] .h2, [dir='rtl'] .h3,
+[dir='rtl'] .h4, [dir='rtl'] .h5, [dir='rtl'] .h6 {
+  font-family: var(--font-heading);
+}
+
+/* Text alignment helpers flipped for RTL */
+[dir='rtl'] .text-start { text-align: right !important; }
+[dir='rtl'] .text-end { text-align: left !important; }
+
+/* Icon offsets — keep glyphs pointing in the RTL-correct direction */
+[dir='rtl'] .btn .bi-arrow-right,
+[dir='rtl'] .link-arrow .bi-arrow-right {
+  transform: scaleX(-1);
+}
+
+/* Bootstrap utility overrides */
+[dir='rtl'] .ms-auto { margin-left: 0 !important; margin-right: auto !important; }
+[dir='rtl'] .me-auto { margin-right: 0 !important; margin-left: auto !important; }
+[dir='rtl'] .pe-0 { padding-right: 0 !important; }
+[dir='rtl'] .ps-0 { padding-left: 0 !important; }
+[dir='rtl'] .pe-1 { padding-right: 0.25rem !important; }
+[dir='rtl'] .ps-1 { padding-left: 0.25rem !important; }
+[dir='rtl'] .pe-2 { padding-right: 0.5rem !important; }
+[dir='rtl'] .ps-2 { padding-left: 0.5rem !important; }
+[dir='rtl'] .pe-3 { padding-right: 1rem !important; }
+[dir='rtl'] .ps-3 { padding-left: 1rem !important; }
+[dir='rtl'] .pe-4 { padding-right: 1.5rem !important; }
+[dir='rtl'] .ps-4 { padding-left: 1.5rem !important; }
+[dir='rtl'] .pe-5 { padding-right: 3rem !important; }
+[dir='rtl'] .ps-5 { padding-left: 3rem !important; }
+
+[dir='rtl'] .text-center .brand-name small { letter-spacing: 0.12em; }
+
+/* Ensure the toggled elements never break the layout */
+[dir='rtl'] .navbar-toggler { margin-right: 0; }
+
+/* Dropdown alignment follows the direction */
+[dir='rtl'] .dropdown-menu {
+  text-align: right;
+}
+
+/* Ribbon & step bubbles mirror to the opposite corner in RTL */
+[dir='rtl'] .pricing-ribbon {
+  right: auto;
+  left: -2.4rem;
+  transform: rotate(-45deg);
+}
+[dir='rtl'] .step-num {
+  right: auto;
+  left: -6px;
+}
+
+/* Admin dashboard RTL touches */
+[dir='rtl'] .kpi-spark {
+  right: auto;
+  left: 0;
+}
+[dir='rtl'] .admin-sidebar .admin-nav a.active { background: var(--ink-800); }
+html[data-theme='dark'] [dir='rtl'] .admin-sidebar .admin-nav a.active { background: #f2f2ef; color: var(--ink-900); }
+
+/* Pricing table alignment already handled inline with [dir='rtl'] rules */
+
+/* Auth toasts — accent border moves to the right edge in RTL */
+[dir='rtl'] .auth-toast {
+  border-left: 1px solid var(--bs-border-color);
+  border-right: 4px solid var(--accent-3);
+}
+[dir='rtl'] .auth-toast-error { border-right-color: #e06a60; }
+
+/* Profile dropdown opens right-aligned by default — flip to the left in RTL */
+[dir='rtl'] .dropdown-menu-end[data-bs-popper] {
+  left: 0;
+  right: auto;
+}

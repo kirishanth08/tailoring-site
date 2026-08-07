@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register — Create Your StitchCraft Account</title>
+  <meta name="description" content="Create a free StitchCraft account to book fittings, track alterations and save your measurements.">
+  <meta name="author" content="StitchCraft">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231f1f1d'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle'%3E%E2%9C%82%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Floating toggles (standalone page, no nav) -->
+  <div class="position-fixed top-0 end-0 p-3 d-flex gap-2" style="z-index:1050;">
+    <button class="theme-toggle d-inline-grid" id="themeToggle" type="button" title="Toggle dark / light mode" aria-label="Toggle theme">
+      <i class="bi bi-moon-stars"></i><i class="bi bi-sun"></i>
+    </button>
+    <button class="rtl-toggle d-inline-block" id="rtlToggle" type="button" title="Toggle LTR / RTL layout">RTL</button>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-9 reveal">
+          <div class="auth-card">
+            <!-- Brand -->
+            <a class="brand mb-4" href="index.html">
+              <span class="brand-logo"><i class="bi bi-scissors"></i></span>
+              <span class="brand-name">StitchCraft<small>Tailor &amp; Alterations</small></span>
+            </a>
+
+            <h2 class="section-title mb-1">Create your account</h2>
+            <p class="text-muted-2 mb-4">Save your measurements, track orders and book in one click.</p>
+
+            <!-- Registration form (client-side demo auth via auth.js) -->
+            <form id="registerForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="regFirst">First name</label>
+                  <div class="input-icon">
+                    <i class="bi bi-person"></i>
+                    <input type="text" class="form-control" id="regFirst" placeholder="Jane" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="regLast">Last name</label>
+                  <div class="input-icon">
+                    <i class="bi bi-person"></i>
+                    <input type="text" class="form-control" id="regLast" placeholder="Doe" required>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="regEmail">Email address</label>
+                  <div class="input-icon">
+                    <i class="bi bi-envelope"></i>
+                    <input type="email" class="form-control" id="regEmail" placeholder="you@example.com" required>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="regPhone">Phone (optional)</label>
+                  <div class="input-icon">
+                    <i class="bi bi-telephone"></i>
+                    <input type="tel" class="form-control" id="regPhone" placeholder="+1 (555) 000-0000">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="regPass">Password</label>
+                  <div class="input-icon">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" class="form-control" id="regPass" placeholder="Min. 8 characters" minlength="8" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="regPass2">Confirm password</label>
+                  <div class="input-icon">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" class="form-control" id="regPass2" placeholder="Repeat password" required>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="regTerms" required>
+                    <label class="form-check-label fs-8 text-muted-2" for="regTerms">
+                      I agree to the <a href="#" class="link-arrow">Terms of Service</a> and <a href="#" class="link-arrow">Privacy Policy</a>.
+                    </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-dark btn-lg w-100"><i class="bi bi-person-plus me-2"></i>Create Account</button>
+                </div>
+              </div>
+            </form>
+
+            <hr class="my-4">
+            <p class="text-center fs-7 mb-0 text-muted-2">Already have an account? <a href="login.html" class="link-arrow">Sign in</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

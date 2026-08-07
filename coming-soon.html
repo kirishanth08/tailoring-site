@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coming Soon — StitchCraft Bespoke Lounge</title>
+  <meta name="description" content="Our bespoke atelier lounge is opening soon. Join the waitlist for early access and a welcome gift.">
+  <meta name="author" content="StitchCraft">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231f1f1d'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle'%3E%E2%9C%82%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Floating toggles -->
+  <div class="position-fixed top-0 end-0 p-3 d-flex gap-2" style="z-index:1050;">
+    <button class="theme-toggle d-inline-grid" id="themeToggle" type="button" title="Toggle dark / light mode" aria-label="Toggle theme">
+      <i class="bi bi-moon-stars"></i><i class="bi bi-sun"></i>
+    </button>
+    <button class="rtl-toggle d-inline-block" id="rtlToggle" type="button" title="Toggle LTR / RTL layout">EN</button>
+  </div>
+
+  <div class="error-page">
+    <div class="container text-center">
+      <!-- Brand -->
+      <a class="brand justify-content-center mb-4" href="index.html">
+        <span class="brand-logo"><i class="bi bi-scissors"></i></span>
+        <span class="brand-name">StitchCraft<small>Tailor &amp; Alterations</small></span>
+      </a>
+
+      <span class="badge-soft bg-body-secondary mb-4 d-inline-flex align-items-center gap-2"><i class="bi bi-stars"></i> New Atelier Opening</span>
+
+      <h1 class="section-title mb-3" style="font-size:clamp(2rem,4vw,3rem);">The Bespoke Lounge is Coming Soon</h1>
+      <p class="section-lead mx-auto mb-5">A private fitting floor, 300+ fabrics and our master cutters at your service. We open our doors in:</p>
+
+      <!-- Countdown -->
+      <div class="cs-days-wrap mb-5">
+        <div class="cs-day"><div class="num" id="cdDays">00</div><div class="lbl">Days</div></div>
+        <div class="cs-day"><div class="num" id="cdHours">00</div><div class="lbl">Hours</div></div>
+        <div class="cs-day"><div class="num" id="cdMins">00</div><div class="lbl">Minutes</div></div>
+        <div class="cs-day"><div class="num" id="cdSecs">00</div><div class="lbl">Seconds</div></div>
+      </div>
+
+      <!-- Waitlist -->
+      <div class="mx-auto" style="max-width:460px;">
+        <h5 class="font-heading mb-3">Join the VIP waitlist</h5>
+        <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('You\'re on the list! Welcome to the Lounge.'); this.reset();">
+          <input type="email" class="form-control" placeholder="Your email address" required aria-label="Email address">
+          <button type="submit" class="btn btn-dark flex-shrink-0">Notify Me</button>
+        </form>
+        <p class="fs-8 text-muted-2 mt-3 mb-0"><i class="bi bi-gift me-1 text-dark"></i>Waitlist members receive a free monogram on their first visit.</p>
+      </div>
+
+      <!-- Social -->
+      <div class="d-flex justify-content-center gap-2 mt-5">
+        <a href="#" class="theme-toggle" style="width:44px;height:44px;" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="theme-toggle" style="width:44px;height:44px;" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="theme-toggle" style="width:44px;height:44px;" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+      </div>
+
+      <p class="fs-7 text-muted-2 mt-4 mb-0">
+        <a href="index.html" class="link-arrow">Back to the website <i class="bi bi-arrow-right"></i></a>
+      </p>
+    </div>
+  </div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Countdown timer — set the launch date below (design-only demo).
+    (function () {
+      var launch = new Date(Date.now() + 21 * 24 * 60 * 60 * 1000); // +21 days from load
+      function pad(n) { return n < 10 ? '0' + n : '' + n; }
+      function tick() {
+        var diff = Math.max(0, launch - new Date());
+        var d = Math.floor(diff / 86400000);
+        var h = Math.floor(diff / 3600000) % 24;
+        var m = Math.floor(diff / 60000) % 60;
+        var s = Math.floor(diff / 1000) % 60;
+        document.getElementById('cdDays').textContent = pad(d);
+        document.getElementById('cdHours').textContent = pad(h);
+        document.getElementById('cdMins').textContent = pad(m);
+        document.getElementById('cdSecs').textContent = pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+</body>
+</html>

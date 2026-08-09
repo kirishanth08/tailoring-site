@@ -8,23 +8,41 @@
 /* Keep trailing punctuation (. , ? ! :) attached to the end of the sentence.
    Content is English, so each text block resolves its own direction from its
    first strong character (LTR for English, RTL for Arabic) — the layout still
-   mirrors, but question marks and full stops no longer jump to the front. */
+   mirrors, but question marks and full stops no longer jump to the front.
+
+   NOTE: unicode-bidi:plaintext is only reliable on BLOCK containers /
+   inline-block boxes. Firefox mishandles it on pure inline boxes (bug
+   1975487: "?What is Open Source" instead of "What is Open Source?"), so the
+   inline text below is handled with direction:ltr instead. */
 [dir='rtl'] p,
 [dir='rtl'] h1, [dir='rtl'] h2, [dir='rtl'] h3,
 [dir='rtl'] h4, [dir='rtl'] h5, [dir='rtl'] h6,
 [dir='rtl'] li, [dir='rtl'] dt, [dir='rtl'] dd,
 [dir='rtl'] th, [dir='rtl'] td, [dir='rtl'] caption,
-[dir='rtl'] blockquote, [dir='rtl'] cite, [dir='rtl'] label,
-[dir='rtl'] legend, [dir='rtl'] figcaption, [dir='rtl'] address, [dir='rtl'] small,
+[dir='rtl'] blockquote, [dir='rtl'] figcaption, [dir='rtl'] address,
 [dir='rtl'] .accordion-body,
 [dir='rtl'] .widget-title, [dir='rtl'] .section-title,
 [dir='rtl'] .page-title, [dir='rtl'] .hero-title,
 [dir='rtl'] .section-lead, [dir='rtl'] .page-lead, [dir='rtl'] .hero-lead,
-[dir='rtl'] .contact-card div, [dir='rtl'] .form-label, [dir='rtl'] .form-check-label,
-[dir='rtl'] .badge, [dir='rtl'] .badge-soft, [dir='rtl'] .tag-cloud a,
-[dir='rtl'] .btn, [dir='rtl'] .hero-badge, [dir='rtl'] a,
-[dir='rtl'] .mini-post h6, [dir='rtl'] .mini-post .date {
+[dir='rtl'] .contact-card div,
+[dir='rtl'] .badge, [dir='rtl'] .badge-soft, [dir='rtl'] .btn, [dir='rtl'] .hero-badge,
+[dir='rtl'] .mini-post h6 {
   unicode-bidi: plaintext;
+}
+
+/* Inline text (links, labels, small print, emphasis, spans) resolves its own
+   LTR paragraph so trailing punctuation stays attached in every browser.
+   Flex containers (.d-flex, .link-arrow, dropdown items) keep the mirrored
+   RTL axis — only their inner inline text flips direction. */
+[dir='rtl'] a:not(.d-flex):not(.link-arrow):not(.dropdown-item),
+[dir='rtl'] small, [dir='rtl'] cite, [dir='rtl'] label,
+[dir='rtl'] legend, [dir='rtl'] .form-label, [dir='rtl'] .form-check-label,
+[dir='rtl'] .tag-cloud a, [dir='rtl'] .mini-post .date,
+[dir='rtl'] span:not(.d-flex),
+[dir='rtl'] strong, [dir='rtl'] em, [dir='rtl'] b, [dir='rtl'] i,
+[dir='rtl'] u, [dir='rtl'] mark {
+  unicode-bidi: normal;
+  direction: ltr;
 }
 
 /* FAQ accordion in RTL — question reads from the right, chevron sits at the

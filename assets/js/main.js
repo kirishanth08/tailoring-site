@@ -55,7 +55,7 @@
   function loadRtlStylesheet() {
     if (document.getElementById('rtlCss')) return;
     /* Resolve the stylesheet path relative to this script so it also works
-       when a page lives in a sub-folder (e.g. /admin/index.html). */
+       when a page lives in a sub-folder. */
     var scripts = document.getElementsByTagName('script');
     var src = scripts.length ? scripts[scripts.length - 1].src : '';
     var base = src.replace(/^(.*\/)assets\/js\/main\.js.*$/, '$1'); /* up to template root */
@@ -289,42 +289,58 @@
      Page is loaded with #resizing, #jackets, etc. from the
      services grid; hide every article except the one selected.
      ========================================================== */
-  document.addEventListener('DOMContentLoaded', function () {
+  (function () {
     var wrapper = document.getElementById('serviceArticles');
     if (!wrapper) return;
-    var hash = (location.hash || '').replace('#', '');
-    if (!hash) return; // opened directly — show the full catalog
-    var target = wrapper.querySelector('article#' + hash);
-    if (!target) return;
 
-    wrapper.querySelectorAll('article').forEach(function (a) {
-      if (a !== target) a.classList.add('d-none');
-    });
-
-    var name = '';
-    var heading = target.querySelector('h2.section-title');
-    if (heading) name = heading.textContent.trim();
-    if (name) {
-      var heroTitle = document.querySelector('.page-hero .page-title');
-      if (heroTitle) heroTitle.textContent = name;
-      var crumb = document.querySelector('.page-hero .breadcrumb-item.active');
-      if (crumb) crumb.textContent = name;
-      document.title = name + ' | StitchCraft';
-    }
-
-    /* Swap the hero photo to this service's own image (s1–s9) */
     var serviceImages = {
       hemming: 's1', resizing: 's2', jackets: 's3', zipper: 's4',
       repairs: 's5', restoration: 's6', tailoring: 's7', shirts: 's8', bridal: 's9'
     };
-    var heroImg = document.getElementById('serviceHeroImg');
-    if (heroImg && serviceImages[hash]) {
-      heroImg.src = 'assets/images/' + serviceImages[hash] + '.webp';
-      if (name) heroImg.alt = name;
+
+    function showServiceFromHash() {
+      var hash = (location.hash || '').replace('#', '');
+      var articles = wrapper.querySelectorAll('article');
+
+      if (!hash) {
+        articles.forEach(function (a) { a.classList.remove('d-none'); });
+        return; // opened directly — show the full catalog
+      }
+
+      var target = wrapper.querySelector('article#' + hash);
+      if (!target) {
+        articles.forEach(function (a) { a.classList.remove('d-none'); });
+        return;
+      }
+
+      articles.forEach(function (a) {
+        a.classList.toggle('d-none', a !== target);
+      });
+
+      var name = '';
+      var heading = target.querySelector('h2.section-title');
+      if (heading) name = heading.textContent.trim();
+      if (name) {
+        var heroTitle = document.querySelector('.page-hero .page-title');
+        if (heroTitle) heroTitle.textContent = name;
+        var crumb = document.querySelector('.page-hero .breadcrumb-item.active');
+        if (crumb) crumb.textContent = name;
+        document.title = name + ' | StitchCraft';
+      }
+
+      /* Swap the hero photo to this service's own image (s1–s9) */
+      var heroImg = document.getElementById('serviceHeroImg');
+      if (heroImg && serviceImages[hash]) {
+        heroImg.src = 'assets/images/' + serviceImages[hash] + '.webp';
+        if (name) heroImg.alt = name;
+      }
+
+      target.scrollIntoView({ block: 'start' });
     }
 
-    target.scrollIntoView({ block: 'start' });
-  });
+    document.addEventListener('DOMContentLoaded', showServiceFromHash);
+    window.addEventListener('hashchange', showServiceFromHash);
+  })();
 
   /* ==========================================================
      10. BLOG DETAILS — show only the clicked post

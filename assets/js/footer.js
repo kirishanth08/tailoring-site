@@ -25,7 +25,7 @@
           '<div class="col-lg-4 col-md-6">' +
             '<a class="brand mb-3" href="index.html">' +
               '<span class="brand-logo"><i class="bi bi-scissors"></i></span>' +
-              '<span class="brand-name" style="color:#f2f2ef;">StitchCraft<small>Tailor &amp; Alterations</small></span>' +
+              '<span class="brand-name" style="color:#f3ede2;">StitchCraft<small>Tailor &amp; Alterations</small></span>' +
             '</a>' +
             '<p class="mt-3" style="max-width:20rem;">Since 1987 we have perfected the craft of the needle and thread — bespoke tailoring, precise alterations and a fit you can feel.</p>' +
             '<div class="footer-social mt-3">' +
@@ -55,8 +55,9 @@
               '<a class="footer-link" href="service-details.html#hemming"><i class="bi bi-chevron-double-right"></i>Hemming</a>' +
               '<a class="footer-link" href="service-details.html#resizing"><i class="bi bi-chevron-double-right"></i>Resizing</a>' +
               '<a class="footer-link" href="service-details.html#zipper"><i class="bi bi-chevron-double-right"></i>Zipper Repair</a>' +
-              '<a class="footer-link" href="service-details.html#tailoring"><i class="bi bi-chevron-double-right"></i>Custom Tailoring</a>' +
-              '<a class="footer-link" href="service-details.html#restoration"><i class="bi bi-chevron-double-right"></i>Restoration</a>' +
+              '<a class="footer-link" href="service-details.html#tailoring"><i class="bi bi-chevron-double-right"></i>Bespoke</a>' +
+              '<a class="footer-link" href="service-details.html#bridal"><i class="bi bi-chevron-double-right"></i>Bridal</a>' +
+              '<a class="footer-link" href="service-details.html#restoration"><i class="bi bi-chevron-double-right"></i>Repairs</a>' +
             '</div>' +
           '</div>' +
 

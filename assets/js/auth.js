@@ -1,22 +1,24 @@
 /* ==========================================================================
    STITCHCRAFT — Client-Side Authentication (demo, no backend)
    --------------------------------------------------------------------------
-   Drives registration, sign-in and the navbar "profile" state using
-   localStorage so the demo flow works end-to-end:
+   Drives registration and sign-in flows using localStorage so the demo
+   works end-to-end:
 
      1. register.html -> creates the account, shows a success toast, then
                          redirects to login.html
      2. login.html    -> verifies credentials, saves a session, then
                          redirects to index.html
-     3. any page with the navbar -> the right side swaps Login / Sign Up
-                         for a profile pill (avatar + first name + menu)
+
+   The navbar no longer renders Login / Sign Up buttons — auth lives on the
+   dedicated login.html / register.html pages only.
 
    Storage keys:
      stitchcraft-users   -> array of { first, last, email, phone, password }
      stitchcraft-session -> { first, last, email }
 
-   Include AFTER nav.js + main.js. The auth containers live in nav.js:
-   #navAuthArea (desktop actions) and #navAuthMobile (off-canvas menu).
+   Include AFTER nav.js + main.js. The #navAuthArea / #navAuthMobile
+   containers were removed from nav.js; renderAuthNav() still guards
+   against missing containers, so it is a safe no-op on every page.
    ========================================================================== */
 
 (function () {

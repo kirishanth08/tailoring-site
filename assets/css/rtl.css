@@ -73,6 +73,18 @@
   unicode-bidi: normal;
 }
 
+/* Navbar + footer brand follow the RTL axis (logo right, name left) instead
+   of being forced LTR by the generic inline-text rule above. */
+[dir='rtl'] .site-header .brand:not(.d-flex),
+[dir='rtl'] .site-footer .brand:not(.d-flex) {
+  unicode-bidi: normal;
+  direction: rtl;
+}
+
+/* Footer quick-link chevrons point into the reading direction */
+[dir='rtl'] .site-footer .footer-link .bi-chevron-double-right,
+[dir='rtl'] .site-footer .footer-bottom a .bi { transform: scaleX(-1); }
+
 [dir='rtl'] body {
   text-align: right;
   letter-spacing: 0;
@@ -139,14 +151,6 @@
   right: auto;
   left: -6px;
 }
-
-/* Admin dashboard RTL touches */
-[dir='rtl'] .kpi-spark {
-  right: auto;
-  left: 0;
-}
-[dir='rtl'] .admin-sidebar .admin-nav a.active { background: var(--ink-800); }
-html[data-theme='dark'] [dir='rtl'] .admin-sidebar .admin-nav a.active { background: #f2f2ef; color: var(--ink-900); }
 
 /* Pricing table alignment already handled inline with [dir='rtl'] rules */
 

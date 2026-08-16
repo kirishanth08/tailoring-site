@@ -1049,6 +1049,8 @@ html[data-theme='dark'] .team-info .role { color: #9a9183; }
 .service-card:hover .service-thumb svg,
 .service-card:hover .service-thumb img { transform: scale(1.06); }
 
+.service-card .btn { padding: 0.6rem 1rem; }
+
 /* Compact craftsmanship-style variant (home services) — icon card, small */
 .services-compact .service-price-card { padding: 1.5rem 1.4rem; }
 .services-compact .service-price-card .feature-icon { width: 68px; height: 68px; font-size: 1.75rem; margin: 0 auto 1.1rem; }
@@ -1099,7 +1101,7 @@ html[data-theme='dark'] .team-info .role { color: #9a9183; }
     10b. HOME SERVICES HUB — deep alternating service sections + quick jump
     ========================================================================== */
 
-.service-spot + .service-spot { border-top: 1px solid var(--bs-border-color); }
+.service-spot + .service-spot { margin-top: 4rem; }
 .service-spot .spot-media {
   position: relative;
   border-radius: var(--radius-lg);
@@ -2160,6 +2162,11 @@ html[data-theme='dark'] .pagination .page-item.active .page-link {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
 }
 .text-center .section-title::after { margin-left: auto; margin-right: auto; }
+
+/* Home page 1: remove divider lines, use spacing instead */
+#services-hub .section-title::after { display: none; }
+#services-hub .eyebrow { margin-bottom: 1.1rem; }
+#services-hub .text-center .eyebrow::before { display: none; }
 
 /* Gradient top strip on every card — instant colour identity */
 .service-card, .post-card, .feature-card, .pricing-card, .testimonial-card, .contact-card {

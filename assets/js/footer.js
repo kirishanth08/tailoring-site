@@ -73,7 +73,7 @@
               '<label class="fs-8 fw-medium text-uppercase letter-spacing-1 mb-2 d-block" for="footerEmail">Newsletter</label>' +
               '<div class="input-group">' +
                 '<input type="email" class="form-control" id="footerEmail" placeholder="Your email address" required>' +
-                '<button class="btn btn-dark px-3" type="submit" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>' +
+                '<button class="btn btn-accent px-3" type="submit" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>' +
               '</div>' +
             '</form>' +
           '</div>' +

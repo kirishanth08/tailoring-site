@@ -54,8 +54,7 @@
   unicode-bidi: plaintext;
 }
 [dir='rtl'] .accordion-button::after {
-  margin-left: 0;
-  margin-right: auto;
+  margin-left: auto;
 }
 
 /* Floating toggles (theme + RTL buttons on login / register / standalone
@@ -165,4 +164,78 @@
 [dir='rtl'] .dropdown-menu-end[data-bs-popper] {
   left: 0;
   right: auto;
+}
+
+/* Footer RTL refinements */
+[dir='rtl'] .site-footer .footer-contact {
+  width: 100%;
+  margin: 0 0 1rem;
+  padding: 0;
+  text-align: right;
+}
+
+/* Keep every contact row anchored to the same right edge as the
+   "Get In Touch" heading/underline. The icon stays at that edge and
+   the text flows left from it. */
+[dir='rtl'] .site-footer .footer-contact li {
+  display: grid;
+  grid-template-columns: 1.25rem minmax(0, 1fr);
+  column-gap: 0.8rem;
+  width: 100%;
+  margin-bottom: 0.85rem;
+  align-items: start;
+  direction: rtl;
+  text-align: right;
+}
+
+[dir='rtl'] .site-footer .footer-contact li .bi {
+  grid-column: 1;
+  justify-self: end;
+  margin: 0.2rem 0 0;
+  flex: none;
+}
+
+[dir='rtl'] .site-footer .footer-contact li span,
+[dir='rtl'] .site-footer .footer-contact li a {
+  grid-column: 2;
+  min-width: 0;
+  width: 100%;
+  direction: ltr;
+  text-align: right;
+  unicode-bidi: plaintext;
+}
+
+[dir='rtl'] .site-footer .footer-newsletter {
+  width: 100%;
+  text-align: right;
+}
+
+/* Keep the newsletter field on the left and the send action on the right. */
+[dir='rtl'] .site-footer .footer-newsletter .input-group {
+  direction: ltr;
+}
+
+[dir='rtl'] .site-footer .footer-newsletter .form-control {
+  direction: rtl;
+  text-align: right;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+[dir='rtl'] .site-footer .footer-newsletter .btn {
+  min-width: 58px;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  box-shadow: none;
+  font-size: 1.05rem;
+  flex: 0 0 58px;
+}
+
+[dir='rtl'] .site-footer .footer-newsletter .btn:hover {
+  transform: translateY(-1px);
 }
